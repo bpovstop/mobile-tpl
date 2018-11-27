@@ -1,3 +1,6 @@
+var base_size = parseInt(
+  process.env.VUE_APP_UI_BASE_SIZE || getComputedStyle(document.body).fontSize
+);
 module.exports = {
   baseUrl: process.env.VUE_APP_SUB_NAME
     ? "/" + process.env.VUE_APP_SUB_NAME + "/"
@@ -7,16 +10,18 @@ module.exports = {
       config.module
         .rule(loader)
         .oneOf("vue")
-        .use("px2rem-loader")
+        .use("px2rem")
         .loader("px2rem-loader")
-        .options({ remUnit: 13.33333333, remPrecision: 8 })
+        .before('postcss-loader')
+        .options({ remUnit: base_size, remPrecision: 8 })
         .end();
       config.module
         .rule(loader)
         .oneOf("normal")
-        .use("px2rem-loader")
+        .use("px2rem")
         .loader("px2rem-loader")
-        .options({ remUnit: 13.33333333, remPrecision: 8 })
+        .before('postcss-loader')
+        .options({ remUnit: base_size, remPrecision: 8 })
         .end();
     }
     generateLoaders("css");

@@ -11,31 +11,31 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     // 多页入口模板
-    {
-      path: "/",
-      name: "mutiple",
-      component: Mutiple,
-      children: [
-        {
-          path: "/",
-          name: "home",
-          meta: { keepAlive: true },
-          component: Home
-        },
-        {
-          path: "/about",
-          name: "about",
-          meta: { keepAlive: true },
-          component: () =>
-            import(/* webpackChunkName: "about" */ "./views/About.vue")
-        }
-      ]
-    },
+    // {
+    //   path: "/",
+    //   name: "mutiple",
+    //   component: Mutiple,
+    //   children: [
+    //     {
+    //       path: "/",
+    //       name: "home",
+    //       meta: { keepAlive: true },
+    //       component: Home
+    //     },
+    //     {
+    //       path: "/about",
+    //       name: "about",
+    //       meta: { keepAlive: true },
+    //       component: () =>
+    //         import(/* webpackChunkName: "about" */ "./views/About.vue")
+    //     }
+    //   ]
+    // },
     // 单页入口模板
     {
-      path: "/page",
-      name: "page",
-      component: Demo
+      path: "/",
+      name: "home",
+      component: Home
     }
   ]
 });

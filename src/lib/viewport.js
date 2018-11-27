@@ -11,7 +11,9 @@
       })();
   var dpr = !is_ios && adr_v[1] > 534 ? 1 : window.devicePixelRatio;
   var r = 1 / dpr,
-    f_s = parseInt(getComputedStyle(document.body).fontSize) * dpr;
+    f_s =
+      parseInt(window.baseSize || getComputedStyle(document.body).fontSize) *
+      dpr;
   document
     .getElementsByTagName("html")[0]
     .setAttribute("style", "font-size:" + f_s + "px");

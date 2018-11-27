@@ -21,6 +21,10 @@ body {
   height: 100%;
 }
 
+div {
+  box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
 }
