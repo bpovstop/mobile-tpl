@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+import Mutiple from "@/layout/mutiple";
+import Home from "./views";
+import Demo from "./views/demo";
 
 Vue.use(Router);
 
@@ -8,19 +10,32 @@ export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
+    // 多页入口模板
     {
       path: "/",
-      name: "home",
-      component: Home
+      name: "mutiple",
+      component: Mutiple,
+      children: [
+        {
+          path: "/",
+          name: "home",
+          meta: { keepAlive: true },
+          component: Home
+        },
+        {
+          path: "/about",
+          name: "about",
+          meta: { keepAlive: true },
+          component: () =>
+            import(/* webpackChunkName: "about" */ "./views/About.vue")
+        }
+      ]
     },
+    // 单页入口模板
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: "/page",
+      name: "page",
+      component: Demo
     }
   ]
 });
