@@ -12,7 +12,7 @@ module.exports = {
         .oneOf("vue")
         .use("px2rem")
         .loader("px2rem-loader")
-        .before('postcss-loader')
+        .before("postcss-loader")
         .options({ remUnit: base_size, remPrecision: 8 })
         .end();
       config.module
@@ -20,17 +20,20 @@ module.exports = {
         .oneOf("normal")
         .use("px2rem")
         .loader("px2rem-loader")
-        .before('postcss-loader')
+        .before("postcss-loader")
         .options({ remUnit: base_size, remPrecision: 8 })
         .end();
     }
     generateLoaders("css");
     generateLoaders("scss");
   },
+  configureWebpack: {
+    devtool: "source-map"
+  },
   devServer: {
     proxy: {
       "/api": {
-        target: process.env.VUE_APP_API,
+        target: process.env.VUE_APP_ENDPOINT,
         ws: true,
         changeOrigin: true
       }

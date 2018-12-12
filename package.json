@@ -5,14 +5,20 @@
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "view": "serve dist",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@okvue/storage": "^0.1.5",
+    "@okvue/view": "^0.2.3",
+    "@okvue/vue-fetch": "^0.2.6",
     "@okvue/vuex-bind": "^0.1.2",
+    "babel-polyfill": "^6.26.0",
     "mint-ui": "^2.2.13",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
@@ -22,11 +28,13 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
+    "file-saver": "^2.0.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "node-sass": "^4.9.0",
     "px2rem-loader": "^0.1.9",
     "sass-loader": "^7.0.1",
+    "serve": "^10.1.1",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {

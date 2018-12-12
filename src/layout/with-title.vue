@@ -24,9 +24,9 @@ export default {
       default: false
     }
   },
-  methods:{
-    touchMoveHandle(){
-      console.log('move')
+  methods: {
+    touchMoveHandle(e) {
+      // console.log(e, e.touches[0].pageY)
     }
   }
 };
@@ -34,13 +34,12 @@ export default {
 
 <style lang="scss" scoped>
 .with-title {
-  width: 100%;
   height: 100%;
-  padding-top: 40px;
+  overflow: hidden;
   .container {
-    -webkit-overflow-scrolling: touch;
+    padding-top: 40px;
     height: 100%;
-    overflow: auto;
+    width: 100%;
   }
   :global(.head) {
     :global(h1) {

@@ -9,7 +9,7 @@
         document.head.appendChild(vpDom);
         return vpDom;
       })();
-  var dpr = !is_ios && adr_v[1] > 534 ? 1 : window.devicePixelRatio;
+  var dpr = !is_ios && (!adr_v || adr_v[1] > 534) ? 1 : window.devicePixelRatio;
   var r = 1 / dpr,
     f_s =
       parseInt(window.baseSize || getComputedStyle(document.body).fontSize) *

@@ -2,23 +2,16 @@
   <router-view/>
 </template>
 <style lang="scss">
-html,
-body {
+html {
   height: 100%;
-  overflow: hidden;
 }
-
 body {
   margin: 0;
+  height: 100%;
   font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
     "Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-#app {
-  width: 100%;
-  height: 100%;
 }
 
 div {
