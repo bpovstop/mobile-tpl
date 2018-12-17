@@ -88,6 +88,7 @@ export default function BetterRouter(option) {
   };
 
   config.routes = routes.concat(_odd, _home, _notmatched);
+  console.log(config.routes);
   const router = new Router(config);
   //   const auth = window.auth;
   //   router.beforeEach((to, from, next) => {

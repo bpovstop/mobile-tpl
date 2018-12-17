@@ -1,20 +1,25 @@
 <template>
-  <div class="with-title" @touchmove="touchMoveHandle">
-    <mt-header class="head" fixed title="固定在顶部">
-      <router-link to="/" slot="left">
-        <mt-button icon="back">返回</mt-button>
+  <o-view column class="with-title" @touchmove="touchMoveHandle">
+    <div class="header">
+      <router-link class="side" to="/" slot="left">
+        <o-view hor ver>
+          <o-icon name="arrow-left"/>
+          <span>返回</span>
+        </o-view>
       </router-link>
-    </mt-header>
+      <span class="title">{{title}}</span>
+      <div class="side">right</div>
+    </div>
     <div class="container">
       <slot/>
     </div>
-  </div>
+  </o-view>
 </template>
 <script>
 export default {
   name: "with-title",
   props: {
-    title: "",
+    title: null,
     backButton: {
       type: Object | String | Boolean,
       default: true
@@ -37,16 +42,30 @@ export default {
   height: 100%;
   overflow: hidden;
   .container {
-    padding-top: 40px;
+    display: flex;
     height: 100%;
     width: 100%;
   }
-  :global(.head) {
-    :global(h1) {
-      font-size: 19px;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    min-height: 40px;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 1;
+    .title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .side {
+      white-space: nowrap;
     }
   }
 }
 </style>
-
-

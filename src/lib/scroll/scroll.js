@@ -466,7 +466,7 @@
 
     this.scrollTo(this.options.startX, this.options.startY);
     this.enable();
-    console.log(this)
+    console.log(this);
   }
 
   IScroll.prototype = {
@@ -811,7 +811,7 @@
         ) {
           easing = utils.ease.quadratic;
         }
-        console.log("after momentum", newY)
+        console.log("after momentum", newY);
         this.scrollTo(newX, newY, time, easing);
         return;
       }
@@ -840,7 +840,12 @@
       } else if (this.x < this.maxScrollX) {
         x = this.maxScrollX;
       }
-      console.log("reset position", this.hasVerticalScroll, this.y, this.maxScrollY)
+      console.log(
+        "reset position",
+        this.hasVerticalScroll,
+        this.y,
+        this.maxScrollY
+      );
 
       if (!this.hasVerticalScroll || this.y > 0) {
         y = 0;
@@ -971,7 +976,7 @@
 
     scrollTo: function(x, y, time, easing) {
       easing = easing || utils.ease.circular;
-      console.log("---->",time)
+      console.log("---->", time);
       this.isInTransition = this.options.useTransition && time > 0;
       var transitionType = this.options.useTransition && easing.style;
       if (!time || transitionType) {
@@ -1036,7 +1041,7 @@
       if (!durationProp) {
         return;
       }
-console.log(time, utils.style)
+      console.log(time, utils.style);
       this.scrollerStyle[durationProp] = time + "ms";
 
       if (!time && utils.isBadAndroid) {

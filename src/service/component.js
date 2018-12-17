@@ -35,16 +35,18 @@ import {
   Toast
 } from "mint-ui";
 import "mint-ui/lib/style.css";
-// import view from "@okvue/view";
+import View from "@okvue/view";
 import Scroll from "@/components/scroll";
 import WithTitle from "../layout/with-title";
+import Icon from "@/components/icon";
 
 export default {
   install: function(Vue) {
     Vue.component(Header.name, Header);
     Vue.component(Button.name, Button);
     Vue.component(WithTitle.name, WithTitle);
+    Vue.component(Icon.name, Icon);
     Vue.use(Scroll);
-    // Vue.use(view);
+    Vue.use(View);
   }
 };

@@ -5,12 +5,8 @@
   </div>
 </template>
 <script>
-import { bindComputed } from "@okvue/vuex-bind";
 export default {
   name: "setting",
-  extends: {
-    computed: bindComputed("multiplePage")
-  },
   data() {
     return {};
   }

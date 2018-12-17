@@ -1,7 +1,5 @@
 <template>
-  <div class="scroll">
-    <slot/>
-  </div>
+  <div class="scroll"><slot /></div>
 </template>
 <script>
 import "@/lib/scroll/scroll";
@@ -22,7 +20,7 @@ export default {
       probeType: 3
     });
     this.scroll.on("scroll", () => {
-      this.$emit("onScroll", { x: this.scroll._x, y: this.scroll._y});
+      this.$emit("onScroll", { x: this.scroll._x, y: this.scroll._y });
     });
     setTimeout(() => {
       this.scroll.refresh();
@@ -38,5 +36,3 @@ export default {
   overflow: hidden;
 }
 </style>
-
-

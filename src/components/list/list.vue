@@ -1,9 +1,13 @@
 <template>
   <o-scroll @onScroll="onScrollHandle">
     <div>
-      <slot name="head"/>
-      <div v-if="data && data.length > 0 && isStick === false" v-for="(item, i) in data" :key="i">
-        <slot v-bind:data="item"/>
+      <slot name="head" />
+      <div
+        v-if="data && data.length > 0 && isStick === false"
+        v-for="(item, i) in data"
+        :key="i"
+      >
+        <slot v-bind:data="item" />
       </div>
       <o-stick-group
         v-if="data && data.length > 0 && isStick === true"
@@ -12,14 +16,19 @@
         :title="item._group"
       >
         <div name="stick_title">
-          <slot name="stick-title" v-bind:data="item._group"/>
+          <slot name="stick-title" v-bind:data="item._group" />
         </div>
-        <slot v-bind:data="item._value"/>
+        <slot v-bind:data="item._value" />
       </o-stick-group>
     </div>
     <div class="index">
       <slot name="index" v-bind:data="index">
-        <span v-if="index && index.length > 0" v-for="(item, i) in index" :key="i">{{item}}</span>
+        <span
+          v-if="index && index.length > 0"
+          v-for="(item, i) in index"
+          :key="i"
+          >{{ item }}</span
+        >
       </slot>
     </div>
   </o-scroll>
@@ -94,13 +103,13 @@ export default {
     onScrollHandle(pos) {
       const _top = Math.round(Math.abs(pos.y));
       const current = this.itemTitle.slice(0).reduce((acc, curr, i, arr) => {
-        if (acc && curr.offsetTop < _top){
-          arr.splice(1)
-          return arr[i - 1]
+        if (acc && curr.offsetTop < _top) {
+          arr.splice(1);
+          return arr[i - 1];
         }
         return true;
       }, true);
-      console.log(current)
+      console.log(current);
     },
     updateItemTitleInfo() {
       const item_title_collection = document.getElementsByName("stick_title");
@@ -125,4 +134,3 @@ export default {
   }
 }
 </style>
-

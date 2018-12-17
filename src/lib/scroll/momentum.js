@@ -16,23 +16,23 @@ export default function Momentum(
   destination =
     current + ((speed * speed) / (2 * deceleration)) * (distance < 0 ? -1 : 1);
   duration = speed / deceleration;
-console.log('init time', destination)
+  console.log("init time", destination);
   if (destination < lowerMargin) {
     destination = wrapperSize
       ? lowerMargin - (wrapperSize / 2.8) * (speed / 16)
       : lowerMargin;
     distance = Math.abs(destination - current);
     duration = distance / speed;
-    console.log('out of top', destination)
+    console.log("out of top", destination);
   } else if (destination > 0) {
     destination = wrapperSize ? (wrapperSize / 2.8) * (speed / 16) : 0;
     distance = Math.abs(current) + destination;
     duration = distance / speed;
-    console.log('out of bottom', destination)
+    console.log("out of bottom", destination);
   }
 
   return {
     destination: Math.round(destination),
-    duration,
+    duration
   };
 }

@@ -69,6 +69,10 @@ ScrollExtra.prototype._move = function(evt) {
   console.log(pageY, this.$children.scrollTop);
 };
 ScrollExtra.prototype._scroll = function(evt) {
-    const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+  const scrollTop = Math.max(
+    window.pageYOffset,
+    document.documentElement.scrollTop,
+    document.body.scrollTop
+  );
   console.log(scrollTop);
 };

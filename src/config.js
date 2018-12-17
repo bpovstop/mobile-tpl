@@ -6,33 +6,40 @@ export default {
     mutiple: [
       {
         route: "/",
-        icon: "icon:logo",
-        iconActive: "icon:logo",
-        name: "home"
+        icon: "guozhi",
+        iconActive: "guozhi",
+        name: "果汁"
       },
       {
         route: "/list",
-        icon: "icon:logo",
-        iconActive:
-          "uri:https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543484931209&di=d1cdf54945d044a33fbc9eb45d0a499f&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F64380cd7912397dddb514b2d5282b2b7d0a287eb.jpg",
-        name: "list",
+        icon: "kafei",
+        iconActive: "kafei",
+        name: "咖啡",
         active: false
       },
       {
-        route: "/form",
-        icon: "icon:logo",
-        iconActive: "src:assets/image/logo.png",
-        name: "form"
+        route: "/component",
+        icon: "xuegao",
+        iconActive: "xuegao",
+        name: "雪糕"
       },
       {
         route: "/setting",
-        name: "setting"
+        icon: "hanbao",
+        iconActive: "hanbao",
+        name: "汉堡包"
       }
     ]
   },
   routes: {
     "/": Home,
-    "/list": 'list'
+    "/list": "list",
+    "/component": "component",
+    "/setting": "setting",
+    "/login": {
+      pure: true,
+      src: "login"
+    }
   },
   api: {
     excel: "get/excel"

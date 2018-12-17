@@ -12,7 +12,6 @@ function afterResponse(response) {
 }
 function failed(http, info) {
   // do something
-  console.warn(http, info);
 }
 
 const common = {
@@ -52,6 +51,5 @@ if (process.env.VUE_APP_ENDPOINT) {
     });
   }
 }
-console.log(VuefetchConfig, process.env.VUE_APP_ENDPOINT);
 
 export default new Vuefetch.config(VuefetchConfig);

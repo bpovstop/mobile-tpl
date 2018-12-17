@@ -2,28 +2,34 @@ import "./lib/disable_smooth_scroll";
 import "./lib/viewport";
 import "babel-polyfill";
 import "whatwg-fetch";
+import "./lib/inpect-icon";
 import Vue from "vue";
-import storage from "@okvue/storage";
-import componentService from "./services/component";
+import Component from "./service/component";
+import Storage from "./service/storage";
+import http from "./service/http";
 import App from "./App.vue";
 import store from "./store";
-import http from "./services/http";
 
 import BetterRouter from "./lib/better-router";
-import Mutiple from "./layout/mutiple";
-import config from "./config";
+import tabbar from "./layout/tabbar";
+import layout from "./layout";
+import conf from "./config";
 
-Vue.use(componentService);
+// 初始化插件
+Vue.use(Component);
+Vue.prototype.app = conf.app;
 Vue.config.productionTip = false;
-Vue.prototype.$storage = new storage();
 
+// 初始化服务
+Vue.use(Storage);
+
+// 初始化路由
 const router = BetterRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  rules: config.routes,
-  // layout can be single vue component or layout-object
-  // eg. { main: layout-main-file, parts: { part1, part2 } }
-  layout: config.app.mutiple && Mutiple
+  mode: "history", // 路由类型[history, hash]
+  base: process.env.VUE_APP_SUB_NAME || "", // 路由基路径, 配合二级目录
+  rules: conf.routes,
+  layout: { main: layout, parts: { tabbar } }
 });
 
+// 初始化页面
 new Vue({ router, http, store, render: h => h(App) }).$mount("#app");
