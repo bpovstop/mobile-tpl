@@ -1,14 +1,18 @@
 <template>
   <div class="with-title" @touchmove="touchMoveHandle">
     <div class="header">
-      <router-link class="side" to="/" slot="left">
-        <o-view hor ver>
-          <o-icon name="arrow-left"/>
-          <span>返回</span>
-        </o-view>
-      </router-link>
+      <div class="side">
+        <router-link v-if="backButton" to="/" slot="left">
+          <o-view>
+            <o-icon name="arrow-left"/>
+            <span>返回</span>
+          </o-view>
+        </router-link>
+      </div>
       <span class="title">{{title}}</span>
-      <div class="side">right</div>
+      <div class="side">
+        <dir v-if="actions">right</dir>
+      </div>
     </div>
     <div class="container">
       <slot/>
@@ -58,6 +62,9 @@ export default {
     padding-right: 10px;
     z-index: 1;
     .title {
+      text-align: center;
+      flex-grow: 1;
+      flex-basis: 60%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -65,6 +72,9 @@ export default {
       padding-right: 10px;
     }
     .side {
+      flex-grow: 0;
+      flex-basis: 20%;
+      overflow: hidden;
       white-space: nowrap;
     }
   }
