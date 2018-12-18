@@ -7,33 +7,24 @@ export default {
       {
         route: "/",
         icon: "guozhi",
-        iconActive: "guozhi",
-        name: "果汁"
-      },
-      {
-        route: "/list",
-        icon: "kafei",
-        iconActive: "kafei",
-        name: "咖啡",
-        active: false
+        name: "首页"
       },
       {
         route: "/component",
-        icon: "xuegao",
+        icon: "kafei",
         iconActive: "xuegao",
-        name: "雪糕"
+        name: "cube-ui",
+        active: false
       },
       {
         route: "/setting",
         icon: "hanbao",
-        iconActive: "hanbao",
-        name: "汉堡包"
+        name: "带标题页"
       }
     ]
   },
   routes: {
     "/": Home,
-    "/list": "list",
     "/component": "component",
     "/setting": "setting",
     "/login": {
@@ -41,7 +32,5 @@ export default {
       src: "login"
     }
   },
-  api: {
-    excel: "get/excel"
-  }
+  api: {}
 };

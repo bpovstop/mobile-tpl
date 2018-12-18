@@ -1,7 +1,7 @@
-import "./lib/disable_smooth_scroll";
 import "./lib/viewport";
 import "babel-polyfill";
 import "whatwg-fetch";
+// 图标
 import "./lib/inpect-icon";
 import Vue from "vue";
 import Component from "./service/component";

@@ -1,5 +1,5 @@
 <template>
-  <o-view column class="with-title" @touchmove="touchMoveHandle">
+  <div class="with-title" @touchmove="touchMoveHandle">
     <div class="header">
       <router-link class="side" to="/" slot="left">
         <o-view hor ver>
@@ -13,7 +13,7 @@
     <div class="container">
       <slot/>
     </div>
-  </o-view>
+  </div>
 </template>
 <script>
 export default {
@@ -39,20 +39,21 @@ export default {
 
 <style lang="scss" scoped>
 .with-title {
-  height: 100%;
-  overflow: hidden;
   .container {
-    display: flex;
-    height: 100%;
     width: 100%;
+    padding-top: 40px;
+    padding-bottom: 52px;
   }
   .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 40px;
     min-height: 40px;
-    position: relative;
     padding-left: 10px;
     padding-right: 10px;
     z-index: 1;

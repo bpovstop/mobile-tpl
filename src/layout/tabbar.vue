@@ -10,11 +10,11 @@
     >
       <component
         v-if="isIconComponet(item)"
-        :is="active === item.route ? item.icon : item.iconActive"
+        :is="active === item.route ? item.iconActive || item.icon : item.icon"
       />
       <o-icon
         class="icon"
-        :name="active === item.route ? item.icon : item.iconActive"
+        :name="active === item.route ? item.iconActive || item.icon : item.icon"
         v-if="!isIconComponet(item)"
       />
       <span v-if="showText">{{ item.name }}</span>
@@ -44,10 +44,9 @@ export default {
       this.$router.push({ path });
     },
     isIconComponet(info) {
-      if (this.active === info.route) {
+      if (this.active === info.route && info.iconActive) {
         return typeof info.iconActive !== "string";
-      }
-      if (this.active !== info.route) {
+      } else {
         return typeof info.icon !== "string";
       }
     }
@@ -66,6 +65,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
   height: 52px;
   background-color: #fff;

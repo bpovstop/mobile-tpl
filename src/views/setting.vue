@@ -1,14 +1,5 @@
 <template>
-  <div>
-    <div class="blur-head">blur head</div>
-    <div>mutiple page setting</div>
-  </div>
+  <with-title title="长标题题题题题题题题题题题题题题题题题">
+    <h4>这是一个带topbar的页面</h4>
+  </with-title>
 </template>
-<script>
-export default {
-  name: "setting",
-  data() {
-    return {};
-  }
-};
-</script>
