@@ -62,8 +62,8 @@ export default function Scroll(dom, options = {}) {
     : this.options.directionLockThreshold;
 
   this.options.bounceEasing =
-    typeof this.options.bounceEasing == "string"
-      ? ease[this.options.bounceEasing] || ease.circular
+    typeof this.options.bounceEasing === "string"
+      ? ease[this.options.bounceEasing] || ease.bounce
       : this.options.bounceEasing;
 
   this.options.resizePolling =
@@ -217,7 +217,8 @@ Scroll.prototype = {
     time = time || 0;
     // todo
   },
-  scrollTo: function(x, y, time, easing = ease.circular) {
+  scrollTo: function(x, y, time, easing) {
+    easing = easing || ease.bounce
     this._is_in_transition = this.options.useTransition && time > 0;
     const t_Type = this.options.useTransition && easing.style;
 
@@ -228,6 +229,7 @@ Scroll.prototype = {
       }
       this._translate(x, y);
     } else {
+      console.log(easing)
       this._animate(x, y, time, easing.fn);
     }
   },
@@ -437,7 +439,7 @@ Scroll.prototype = {
         y = Math.max(-item_rect.top, this._max_scroll_y);
         cx = x - Math.round(item_rect.width / 2);
         cy = y - Math.round(item_rect.height / 2);
-        console.log(step_y);
+
         this._pages[m][n] = {
           x,
           y,
@@ -830,7 +832,7 @@ Scroll.prototype = {
         _x > 0 ||
         _x < this._max_scroll_x ||
         _y > 0 ||
-        _y < this._max_scroll_x
+        _y < this._max_scroll_y
       ) {
         _easing = ease.quadratic;
       }
@@ -883,7 +885,8 @@ Scroll.prototype = {
       }
     }
   },
-  _animate: function(x, y, duration = 0, easing) {
+  _animate: function(x, y, duration = 0, easingFn) {
+
     const _this = this,
       start_x = this._x,
       start_y = this._y,
@@ -907,7 +910,8 @@ Scroll.prototype = {
       }
 
       _now = (_now - start_time) / duration;
-      _easing = easing(_now);
+      _easing = easingFn(_now);
+      console.log('animate', _easing, _now)
       _x = (x - start_x) * _easing + start_x;
       _y = (y - start_y) * _easing + start_y;
       _this._translate(_x, _y);

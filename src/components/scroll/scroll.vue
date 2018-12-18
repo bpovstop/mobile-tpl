@@ -1,5 +1,7 @@
 <template>
-  <div class="scroll"><slot /></div>
+  <div class="scroll">
+    <slot/>
+  </div>
 </template>
 <script>
 import "@/lib/scroll/scroll";
@@ -25,6 +27,11 @@ export default {
     setTimeout(() => {
       this.scroll.refresh();
     }, 2000);
+  },
+  methods: {
+    goto(x, y) {
+      this.scroll.scrollTo(x, -y, 0);
+    }
   }
 };
 </script>

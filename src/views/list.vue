@@ -3,24 +3,31 @@
     <List :data="data" class="list">
       <!-- 列表表头 -->
       <template slot="head">
-        <div>this is head{{ $store.getters.get_file_status }}</div>
-        <input type="file" @change="changeHandle" />
-        <button @click="clickHandle">fetch test</button>
-        <a href="http://localhost:5055/get/excel" download>download</a>
+        <div class="demo"/>
       </template>
       <!-- 这里是stick组或data列表项(非stick时) -->
       <template slot="stick-title" slot-scope="{ data }">
-        <div>{{ data }}</div>
+        <div class="stick-title">
+          <div>{{ data && data.datetime }}</div>
+          <p>收入: {{ data && data.income }}, 支出: {{ data && data.pay }}</p>
+        </div>
       </template>
       <template slot-scope="{ data }">
-        <div class="item" v-for="(item, i) in data" :key="i">
-          {{ item.label }}
+        <div class="group">
+          <o-view ver hor="space-between" class="item" v-for="(item, i) in data" :key="i">
+            <o-view>
+              <div class="avatar"></div>
+              <div>
+                <h4>{{ item.name }}</h4>
+                <span>{{ item.time }}</span>
+              </div>
+            </o-view>
+            <h2>{{ item.pay }}</h2>
+          </o-view>
         </div>
       </template>
       <!-- 自定义右侧index列表 -->
-      <template slot="index" slot-scope="{ data }">
-        <span v-for="(item, i) in data" :key="i">{{ item }}</span>
-      </template>
+      <!-- <template slot="index" slot-scope="{ data }"/> -->
     </List>
   </with-title>
 </template>
@@ -44,7 +51,7 @@ export default {
     // });
   },
   mounted() {
-    const height = getComputedStyle(this.$el).height;
+    // const height = getComputedStyle(this.$el).height;
   },
   watch: {},
   methods: {
@@ -58,160 +65,345 @@ export default {
     }
   },
   data() {
-    const data = [
-      { index: 0, label: "Sometimes you just need a little help" },
-      { index: 1, label: "Sometimes you just need a little help" },
-      { index: 2, label: "Sometimes you just need a little help" },
-      { index: 3, label: "Sometimes you just need a little help" },
-      { index: 4, label: "Sometimes you just need a little help" },
-      { index: 5, label: "Sometimes you just need a little help" },
-      { index: 6, label: "Sometimes you just need a little help" },
-      { index: 7, label: "Sometimes you just need a little help" },
-      { index: 8, label: "Sometimes you just need a little help" },
-      { index: 9, label: "Sometimes you just need a little help" },
-      { index: 10, label: "Sometimes you just need a little help" },
-      { index: 11, label: "Sometimes you just need a little help" },
-      { index: 12, label: "Sometimes you just need a little help" },
-      { index: 13, label: "Sometimes you just need a little help" },
-      { index: 14, label: "Sometimes you just need a little help" },
-      { index: 15, label: "Sometimes you just need a little help" },
-      { index: 16, label: "Sometimes you just need a little help" }
-    ];
     const stickData = [
       {
-        _group: 0,
+        _group: { index: 0, datetime: "2018-12-17", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 1,
+        _group: { index: 1, datetime: "2018-12-16", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 2,
+        _group: { index: 2, datetime: "2018-12-15", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 3,
+        _group: { index: 3, datetime: "2018-12-14", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 4,
+        _group: { index: 4, datetime: "2018-12-13", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 5,
+        _group: { index: 5, datetime: "2018-12-12", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 6,
+        _group: { index: 6, datetime: "2018-12-11", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 7,
+        _group: { index: 7, datetime: "2018-12-10", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 8,
+        _group: { index: 8, datetime: "2018-12-09", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 9,
+        _group: { index: 9, datetime: "2018-12-08", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 10,
+        _group: { index: 10, datetime: "2018-12-07", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 11,
+        _group: { index: 11, datetime: "2018-12-06", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 12,
+        _group: { index: 12, datetime: "2018-12-05", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 13,
+        _group: { index: 13, datetime: "2018-12-04", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 14,
+        _group: { index: 14, datetime: "2018-12-03", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 15,
+        _group: { index: 15, datetime: "2018-12-02", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       },
       {
-        _group: 16,
+        _group: { index: 16, datetime: "2018-12-01", income: 20187, pay: 9392 },
         _value: [
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" },
-          { label: "Sometimes you just need a little help" }
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          },
+          {
+            name: "全家便利店",
+            time: "昨天 21:49",
+            pay: 42.5
+          }
         ]
       }
     ];
@@ -220,41 +412,50 @@ export default {
       data: stickData,
       file: null
     };
-  },
-  watch: {
-    imageLoaded() {}
   }
 };
 </script>
 <style lang="scss" scoped>
+.demo {
+  background-image: url(../assets/image/login.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50px;
+  background-position: left -14px;
+}
 .list {
   width: 100%;
+  background-color: #f1f1f1;
 }
-.home {
-  .bg {
-    background: linear-gradient(to bottom);
-    background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543711536894&di=ae1beb0cffeb5a05e88e0d5a2aade6ff&imgtype=0&src=http%3A%2F%2Fimage4.xyzs.com%2Fupload%2Fff%2Fee%2F1126%2F20150506%2F143088212130425_0.jpg);
-    position: relative;
-    /* height: 200vh; */
-    /* overflow: hidden; */
-    h1 {
-      margin-top: 0;
-      /* test snap */
-      height: 80px;
-    }
+.stick-title {
+  background-color: #f1f1f1;
+  padding: 10px;
+  p {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 4px;
+    font-size: 12px;
   }
+}
+.group {
   .item {
-    height: 80px;
-    background-color: green;
-    margin-bottom: 10px;
-  }
-  :global(.img) {
-    width: 100%;
-    height: 100%;
-    background-size: 100%;
-    background-color: green;
-    /* background-image: url(../assets/image/bcImg.svg); */
-    background-repeat: repeat-y;
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #e4e4e4;
+    .avatar {
+      width: 40px;
+      height: 40px;
+      background-color: #d2d2d2;
+      border-radius: 20px;
+      margin-right: 10px;
+    }
+    h4,
+    h2 {
+      margin: 0;
+    }
+    span {
+      font-size: 12px;
+    }
   }
 }
 </style>

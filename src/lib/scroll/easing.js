@@ -17,18 +17,26 @@ const back = {
     return (k = k - 1) * k * ((b + 1) * k + b) + 1;
   }
 };
+// const bounce = {
+//   style: "",
+//   fn: function(k) {
+//     if ((k /= 1) < 1 / 2.75) {
+//       return 7.5625 * k * k;
+//     } else if (k < 2 / 2.75) {
+//       return 7.5625 * (k -= 1.5 / 2.75) * k + 0.75;
+//     } else if (k < 2.5 / 2.75) {
+//       return 7.5625 * (k -= 2.25 / 2.75) * k + 0.9375;
+//     } else {
+//       return 7.5625 * (k -= 2.625 / 2.75) * k + 0.984375;
+//     }
+//   }
+// };
+// easeOutQuart
 const bounce = {
-  style: "",
-  fn: function(k) {
-    if ((k /= 1) < 1 / 2.75) {
-      return 7.5625 * k * k;
-    } else if (k < 2 / 2.75) {
-      return 7.5625 * (k -= 1.5 / 2.75) * k + 0.75;
-    } else if (k < 2.5 / 2.75) {
-      return 7.5625 * (k -= 2.25 / 2.75) * k + 0.9375;
-    } else {
-      return 7.5625 * (k -= 2.625 / 2.75) * k + 0.984375;
-    }
+  // style: "cubic-bezier(0.165, 0.84, 0.44, 1)",
+  style: "cubic-bezier(0, 0.36, 0, 1)",
+  fn: function(t) {
+    return 1 - --t * t * t * t;
   }
 };
 const elastic = {
